@@ -53,13 +53,13 @@ sudo touch /etc/skel/.config/gnome-initial-setup-done
 sudo chmod -R 777 /etc/skel/.config/
 sudo chmod -R 777 /etc/skel/.bashrc
 if grep -q yes /etc/skel/.config/gnome-initial-setup-done; then
-  echo "Initial setup detected";
+  echo "Initial setup detected for DO Not Disturb";
 else
   echo "yes" >> /etc/skel/.config/gnome-initial-setup-done;
 fi
 
 if grep -q show-banners /etc/skel/.bashrc; then
-	echo "Initial setup detected";
+	echo "Initial setup detected for .bashrc";
 else
 	echo "gsettings set org.gnome.desktop.notifications show-banners false" >> /etc/skel/.bashrc
 fi
@@ -67,7 +67,7 @@ sudo chmod 777  /etc/sssd/sssd.conf
 sudo chmod 777  /etc/resolv.conf
 
 if grep -q ad_gpo_access_control /etc/sssd/sssd.conf; then
-	echo "Initial setup detected";
+	echo "Initial setup detected for sssd.conf";
 else
 	sudo echo "ad_gpo_access_control = permissive" >> /etc/sssd/sssd.conf
 fi
