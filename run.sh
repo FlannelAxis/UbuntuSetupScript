@@ -1,20 +1,20 @@
 #!/bin/bash
 
-echo apt install -y git curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli
+sudo apt install -y git curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli
 SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 if (! test -e /usr/local/bin/cura) then
 	curl -L https://github.com/Ultimaker/Cura/releases/download/5.4.0/UltiMaker-Cura-5.4.0-linux-modern.AppImage -o $SCRIPT/cura
-	echo mv $SCRIPT/cura /usr/local/bin/
-	echo chmod +x /usr/local/bin/cura
+	sudo mv $SCRIPT/cura /usr/local/bin/
+	sudo chmod +x /usr/local/bin/cura
 fi
 ICON=$SCRIPT/Cura/resources/images/cura-icon.png
 if (! test -e $SCRIPT/Cura.desktop) then
 	if (! test -e $ICON) then
 		git clone https://github.com/Ultimaker/Cura.git $SCRIPT/Cura/
 	fi
-	echo cp $SCRIPT/Cura/resources/images/cura-icon.png /usr/local/bin/cura-icon.png
-	echo "[Desktop Entry]
+	sudo cp $SCRIPT/Cura/resources/images/cura-icon.png /usr/local/bin/cura-icon.png
+	sudo "[Desktop Entry]
 	Version=1.0
 	Type=Application
 	Name=Cura
