@@ -47,6 +47,7 @@ echo "AD Domain Administrator password is here needed, please enter the domain p
 sudo realm join -v bsch.bancroftschool.org
 sudo pam-auth-update --enable mkhomedir
 sudo mkdir /etc/skel/.config
+
 sudo chmod -R 777 /etc/skel/.config/
 sudo chmod -R 777 /etc/skel/.bashrc
 echo "yes" >> /etc/skel/.config/gnome-initial-setup-done
