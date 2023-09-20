@@ -39,6 +39,8 @@ sudo realm join -v bsch.bancroftschool.org
 sudo pam-auth-update --enable mkhomedir
 sudo mkdir /etc/skel/.config
 echo "yes" >> /etc/skel/.config/gnome-initial-setup-done
+sudo chmod 777  /etc/sssd/sssd.conf
+sudo chmod 777  /etc/resolv.conf
 sudo echo "ad_gpo_access_control = permissive" >> /etc/sssd/sssd.conf
 
 sudo echo "nameserver 10.88.0.8
@@ -46,5 +48,7 @@ nameserver 127.0.0.53
 options edns0 trust-ad
 search .
 " >  /etc/resolv.conf
+
+sudo chmod 600  /etc/sssd/sssd.conf
 
 
