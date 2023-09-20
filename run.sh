@@ -32,7 +32,7 @@ if (! test -e $SCRATCHJR) then
 	git clone https://github.com/leonskb4/ScratchJr-Desktop $SCRATCHJR
 	cd $SCRATCHJR
 	npm install && npm run publish
-	sudo dpkg -i $SCRATCHJR/out/make/scratchjr_1.3.2_amd64.deb
+	sudo dpkg -i $SCRATCHJR/out/make/scratchjr*.deb
 fi
 echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
 sudo realm join -v bsch.bancroftschool.org
