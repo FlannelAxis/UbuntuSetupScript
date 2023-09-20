@@ -1,6 +1,7 @@
 #!/bin/bash
 
 pkexec apt install -y git curl wget inkscape scratch docker.io  libfuse2
+SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 if (! test -e /usr/local/bin/cura) then
 	curl -L https://github.com/Ultimaker/Cura/releases/download/5.4.0/UltiMaker-Cura-5.4.0-linux-modern.AppImage -o cura
@@ -9,8 +10,9 @@ if (! test -e /usr/local/bin/cura) then
 fi
 
 if (! test -e Cura.desktop) then
-	git clone https://github.com/Ultimaker/Cura.git
-	pkexec cp Cura/resources/images/cura-icon.png /usr/local/bin/cura-icon.png
+	
+	git clone https://github.com/Ultimaker/Cura.git $SCRIPT/Cura
+	pkexec cp $SCRIPT/Cura/resources/images/cura-icon.png /usr/local/bin/cura-icon.png
 	echo "[Desktop Entry]
 	Version=1.0
 	Type=Application
