@@ -47,8 +47,10 @@ echo "AD Domain Administrator password is here needed, please enter the domain p
 sudo realm join -v bsch.bancroftschool.org
 sudo pam-auth-update --enable mkhomedir
 sudo mkdir /etc/skel/.config
-sudo echo "yes" >> /etc/skel/.config/gnome-initial-setup-done
-sudo echo "gsettings set org.gnome.desktop.notifications show-banners false" >> /etc/skel/.bashrc
+sudo chmod -R 777 /etc/skel/.config/
+sudo chmod -R 777 /etc/skel/.bashrc
+echo "yes" >> /etc/skel/.config/gnome-initial-setup-done
+echo "gsettings set org.gnome.desktop.notifications show-banners false" >> /etc/skel/.bashrc
 sudo chmod 777  /etc/sssd/sssd.conf
 sudo chmod 777  /etc/resolv.conf
 sudo echo "ad_gpo_access_control = permissive" >> /etc/sssd/sssd.conf
