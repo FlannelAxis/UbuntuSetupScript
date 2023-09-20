@@ -52,9 +52,9 @@ sudo chmod -R 777 /etc/skel/.config/
 sudo chmod -R 777 /etc/skel/.bashrc
 if grep -q yes /etc/skel/.config/gnome-initial-setup-done; then
 
-  echo "Initial setup detected"
+  echo "Initial setup detected";
 else
-  echo "yes" >> /etc/skel/.config/gnome-initial-setup-done
+  echo "yes" >> /etc/skel/.config/gnome-initial-setup-done;
 fi
 
 
