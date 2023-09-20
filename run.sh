@@ -9,13 +9,15 @@ if (! test -e /usr/local/bin/cura)
 fi
 
 if (! test -e Cura.desktop) then
+	git clone https://github.com/Ultimaker/Cura.git
+	pkexec cp Cura/resources/images/cura-icon.png /usr/local/bin/cura-icon.png
 	echo "[Desktop Entry]
 	Version=1.0
 	Type=Application
 	Name=Cura
 	Comment=
 	Exec=/usr/local/bin/cura
-	Icon=$HOME/bin/eclipse-bs/eclipse/icon.xpm
+	Icon=/usr/local/bin/cura-icon.png
 	Path=
 	Terminal=false
 	StartupNotify=false" > Cura.desktop
