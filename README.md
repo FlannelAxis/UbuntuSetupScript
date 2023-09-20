@@ -1,7 +1,7 @@
 # UbuntuSetupScript
 This script will set up a fresh Ubuntu machine as a Bancroft lab computer
 
-# How TO Run
+# How To Run
 
 This script can be run on a fresh Ubuntu machine to set it up as a lab machine
 
