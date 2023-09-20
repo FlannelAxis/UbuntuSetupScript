@@ -2,7 +2,7 @@
 
 pkexec apt install -y git curl wget inkscape scratch docker.io  libfuse2
 
-if (! test -e /usr/local/bin/cura)
+if (! test -e /usr/local/bin/cura) then
 	curl -L https://github.com/Ultimaker/Cura/releases/download/5.4.0/UltiMaker-Cura-5.4.0-linux-modern.AppImage -o cura
 	pkexec mv cura /usr/local/bin/
 	pkexec chmod +x /usr/local/bin/cura
