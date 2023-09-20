@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pkexec apt install -y git curl wget inkscape scratch docker.io  libfuse2
+pkexec apt install -y git curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli
 SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 if (! test -e /usr/local/bin/cura) then
@@ -27,3 +27,21 @@ if (! test -e $SCRIPT/Cura.desktop) then
 	gio set $SCRIPT/Cura.desktop "metadata::trusted" yes
 	pkexec desktop-file-install $SCRIPT/Cura.desktop
 fi
+SCRATCHJR=$SCRIPT/ScratchJr-Desktop/
+if (! test -e $SCRATCHJR) then
+	git clone https://github.com/leonskb4/ScratchJr-Desktop $SCRATCHJR
+	cd $SCRATCHJR
+	npm install && npm run publish
+fi
+echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
+sudo realm join -v bsch.bancroftschool.org
+sudo pam-auth-update --enable mkhomedir
+sudo mkdir /etc/skel/.config
+echo "yes" >> /etc/skel/.config/gnome-initial-setup-done
+sudo echo "ad_gpo_access_control = permissive" >> /etc/sssd/sssd.conf
+
+sudo echo "nameserver 10.88.0.8
+nameserver 127.0.0.53
+options edns0 trust-ad
+search .
+" >  /etc/resolv.conf
