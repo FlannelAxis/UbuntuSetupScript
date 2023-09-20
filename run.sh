@@ -21,7 +21,6 @@ if (! test -e Cura.desktop) then
 	Path=
 	Terminal=false
 	StartupNotify=false" > Cura.desktop
-	chmod +x ~/bin/Eclipse-BS.desktop
 	gio set Cura.desktop "metadata::trusted" yes
 	pkexec desktop-file-install Cura.desktop
 fi
