@@ -9,7 +9,7 @@ if (! test -e /usr/local/bin/cura) then
 	pkexec chmod +x /usr/local/bin/cura
 fi
 
-if (! test -e Cura.desktop) then
+if (! test -e $SCRIPT/Cura.desktop) then
 	
 	git clone https://github.com/Ultimaker/Cura.git $SCRIPT/Cura
 	pkexec cp $SCRIPT/Cura/resources/images/cura-icon.png /usr/local/bin/cura-icon.png
@@ -22,7 +22,7 @@ if (! test -e Cura.desktop) then
 	Icon=/usr/local/bin/cura-icon.png
 	Path=
 	Terminal=false
-	StartupNotify=false" > Cura.desktop
-	gio set Cura.desktop "metadata::trusted" yes
-	pkexec desktop-file-install Cura.desktop
+	StartupNotify=false" > $SCRIPT/Cura.desktop
+	gio set $SCRIPT/Cura.desktop "metadata::trusted" yes
+	pkexec desktop-file-install $SCRIPT/Cura.desktop
 fi
