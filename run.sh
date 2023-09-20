@@ -34,11 +34,21 @@ if (! test -e $SCRATCHJR) then
 	npm install && npm run publish
 	sudo dpkg -i $SCRATCHJR/out/make/scratchjr*.deb
 fi
+
+wget https://github.com/CommonWealthRobotics/Installer-Linux-BowlerStudio/releases/latest/download/bowlerstudio -O $SCRIPT/bowlerstudio
+sudo cp $SCRIPT/bowlerstudio /usr/local/bin/bowlerstudio
+chmod +x /usr/local/bin/bowlerstudio
+
+wget wget https://github.com/CommonWealthRobotics/ESP32ArduinoEclipseInstaller/releases/latest/download/eclipse -O $SCRIPT/eclipse
+sudo cp $SCRIPT/bowlerstudio /usr/local/bin/eclipse
+chmod +x /usr/local/bin/eclipse
+
 echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
 sudo realm join -v bsch.bancroftschool.org
 sudo pam-auth-update --enable mkhomedir
 sudo mkdir /etc/skel/.config
-echo "yes" >> /etc/skel/.config/gnome-initial-setup-done
+sudo echo "yes" >> /etc/skel/.config/gnome-initial-setup-done
+sudo echo "gsettings set org.gnome.desktop.notifications show-banners false" >> /etc/skel/.bashrc
 sudo chmod 777  /etc/sssd/sssd.conf
 sudo chmod 777  /etc/resolv.conf
 sudo echo "ad_gpo_access_control = permissive" >> /etc/sssd/sssd.conf
