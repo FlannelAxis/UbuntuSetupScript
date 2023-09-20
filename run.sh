@@ -50,7 +50,14 @@ sudo mkdir /etc/skel/.config
 
 sudo chmod -R 777 /etc/skel/.config/
 sudo chmod -R 777 /etc/skel/.bashrc
-echo "yes" >> /etc/skel/.config/gnome-initial-setup-done
+if grep -q yes /etc/skel/.config/gnome-initial-setup-done; then
+
+  echo "Initial setup detected"
+else
+  echo "yes" >> /etc/skel/.config/gnome-initial-setup-done
+fi
+
+
 echo "gsettings set org.gnome.desktop.notifications show-banners false" >> /etc/skel/.bashrc
 sudo chmod 777  /etc/sssd/sssd.conf
 sudo chmod 777  /etc/resolv.conf
