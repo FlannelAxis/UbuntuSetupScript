@@ -45,3 +45,5 @@ nameserver 127.0.0.53
 options edns0 trust-ad
 search .
 " >  /etc/resolv.conf
+
+
