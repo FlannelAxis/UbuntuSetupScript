@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install -y git curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli
+sudo apt install -y git curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita
 SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 if (! test -e /usr/local/bin/cura) then
