@@ -86,4 +86,9 @@ search .
 
 sudo chmod 600  /etc/sssd/sssd.conf
 
+sudo mkdir -p /etc/skel/snap/firefox/common/
+sudo cp -r $SCRIPT/.mozilla/ /etc/skel/snap/firefox/common/
+
+
+
 
