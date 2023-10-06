@@ -38,6 +38,7 @@ if (! test -e $SCRIPT/Cura.desktop) then
 	Terminal=false
 	StartupNotify=false" > $SCRIPT/Cura.desktop
 	gio set $SCRIPT/Cura.desktop "metadata::trusted" yes
+ 	sudo chmod +x $SCRIPT/Cura.desktop
 	sudo desktop-file-install $SCRIPT/Cura.desktop
 fi
 if (! test -e $SCRIPT/arduino2.desktop) then
@@ -53,6 +54,7 @@ if (! test -e $SCRIPT/arduino2.desktop) then
 	Terminal=false
 	StartupNotify=false" > $SCRIPT/arduino2.desktop
 	gio set $SCRIPT/arduino2.desktop "metadata::trusted" yes
+	sudo chmod +x $SCRIPT/arduino2.desktop
 	sudo desktop-file-install $SCRIPT/arduino2.desktop
 fi
 
