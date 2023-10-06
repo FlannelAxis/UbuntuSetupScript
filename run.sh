@@ -22,7 +22,9 @@ if (! test -e /usr/local/bin/cura) then
 	sudo chmod +x /usr/local/bin/cura
 fi
 ICON=$SCRIPT/Cura/resources/images/cura-icon.png
-if (! test -e $SCRIPT/Cura.desktop) then
+CURADESKTOP=$SCRIPT/Cura-5.4.desktop
+ARDUINODESKTOP=$SCRIPT/Arduino-2.desktop
+if (! test -e $CURADESKTOP) then
 	if (! test -e $ICON) then
 		git clone https://github.com/Ultimaker/Cura.git $SCRIPT/Cura/
 	fi
@@ -36,12 +38,13 @@ if (! test -e $SCRIPT/Cura.desktop) then
 	Icon=/usr/local/bin/cura-icon.png
 	Path=
 	Terminal=false
-	StartupNotify=false" > $SCRIPT/Cura.desktop
-	gio set $SCRIPT/Cura.desktop "metadata::trusted" yes
- 	sudo chmod +x $SCRIPT/Cura.desktop
-	sudo desktop-file-install $SCRIPT/Cura.desktop
+	StartupNotify=false" > $CURADESKTOP
+  	sudo chmod +x $CURADESKTOP
+	gio set $CURADESKTOP "metadata::trusted" yes
+
+	sudo desktop-file-install $CURADESKTOP
 fi
-if (! test -e $SCRIPT/arduino2.desktop) then
+if (! test -e $ARDUINODESKTOP) then
 	sudo wget https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg -O /usr/local/bin/arduino.svg
 	sudo "[Desktop Entry]
 	Version=1.0
@@ -52,10 +55,11 @@ if (! test -e $SCRIPT/arduino2.desktop) then
 	Icon=/usr/local/bin/arduino.svg
 	Path=
 	Terminal=false
-	StartupNotify=false" > $SCRIPT/arduino2.desktop
-	gio set $SCRIPT/arduino2.desktop "metadata::trusted" yes
-	sudo chmod +x $SCRIPT/arduino2.desktop
-	sudo desktop-file-install $SCRIPT/arduino2.desktop
+	StartupNotify=false" > $ARDUINODESKTOP
+ 	sudo chmod +x $ARDUINODESKTOP
+	gio set $ARDUINODESKTOP "metadata::trusted" yes
+
+	sudo desktop-file-install $ARDUINODESKTOP
 fi
 
 SCRATCHJR=$SCRIPT/ScratchJr-Desktop/
