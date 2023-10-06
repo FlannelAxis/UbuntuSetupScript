@@ -75,9 +75,47 @@ sudo chmod +x /usr/local/bin/bowlerstudio
 wget https://github.com/CommonWealthRobotics/ESP32ArduinoEclipseInstaller/releases/latest/download/eclipse -O $SCRIPT/eclipse
 sudo cp $SCRIPT/eclipse /usr/local/bin/eclipse
 sudo chmod +x /usr/local/bin/eclipse
+sudo cp icon.xpm /usr/local/bin/
+sudo cp splash.png /usr/local/bin/
 
 sudo sed -i 's/sudo/#sudo/g' /usr/local/bin/bowlerstudio
 sudo sed -i 's/pkexec/#pkexec/g' /usr/local/bin/eclipse
+
+ECLIPSE=$SCRIPT/Eclipse-BS.desktop
+if (! test -e $ECLIPSE) then
+	echo "[Desktop Entry]
+	Version=1.0
+	Type=Application
+	Name=Eclipse Bowlerstudio
+	Comment=
+	Exec=/usr/local/bin/eclipse
+	Icon=/usr/local/bin/icon.xpm
+	Path=
+	Terminal=false
+	StartupNotify=false" > $ECLIPSE
+	sudo chmod +x $ECLIPSE
+	gio set $ECLIPSE "metadata::trusted" yes
+	sudo desktop-file-install $ECLIPSE
+fi
+DESKTOP_FILE=$SCRIPT/bowlerstudio.desktop
+if (! test -e $DESKTOP_FILE) then
+	echo "[Desktop Entry]
+	Version=1.0
+	Type=Application
+	Name=BowlerStudio
+	Comment=BowlerStudio Robotics IDE
+	Exec=/usr/local/bin/bowlerstudio
+	Icon=/usr/local/bin/splash.png
+	Path=
+	Terminal=false
+	StartupNotify=false" > $DESKTOP_FILE
+	sudo chmod +x $DESKTOP_FILE
+	gio set $DESKTOP_FILE "metadata::trusted" yes
+	sudo desktop-file-install $DESKTOP_FILE
+fi
+
+
+
 echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
 sudo realm join -v bsch.bancroftschool.org
 sudo pam-auth-update --enable mkhomedir
