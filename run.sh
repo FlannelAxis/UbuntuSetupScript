@@ -69,7 +69,7 @@ sudo cp $SCRIPT/bowlerstudio /usr/local/bin/bowlerstudio
 chmod +x /usr/local/bin/bowlerstudio
 
 wget wget https://github.com/CommonWealthRobotics/ESP32ArduinoEclipseInstaller/releases/latest/download/eclipse -O $SCRIPT/eclipse
-sudo cp $SCRIPT/bowlerstudio /usr/local/bin/eclipse
+sudo cp $SCRIPT/eclipse /usr/local/bin/eclipse
 chmod +x /usr/local/bin/eclipse
 
 echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
