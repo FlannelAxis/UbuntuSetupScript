@@ -40,6 +40,22 @@ if (! test -e $SCRIPT/Cura.desktop) then
 	gio set $SCRIPT/Cura.desktop "metadata::trusted" yes
 	echo desktop-file-install $SCRIPT/Cura.desktop
 fi
+if (! test -e $SCRIPT/arduino2.desktop) then
+	sudo wget https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg -O /usr/local/bin/arduino.svg
+	sudo "[Desktop Entry]
+	Version=1.0
+	Type=Application
+	Name=Cura
+	Comment=
+	Exec=/usr/local/bin/arduino-2
+	Icon=/usr/local/bin/arduino.svg
+	Path=
+	Terminal=false
+	StartupNotify=false" > $SCRIPT/arduino2.desktop
+	gio set $SCRIPT/arduino2.desktop "metadata::trusted" yes
+	echo desktop-file-install $SCRIPT/arduino2.desktop
+fi
+
 SCRATCHJR=$SCRIPT/ScratchJr-Desktop/
 if (! test -e $SCRATCHJR) then
 	git clone https://github.com/leonskb4/ScratchJr-Desktop $SCRATCHJR
