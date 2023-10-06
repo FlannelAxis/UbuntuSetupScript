@@ -45,7 +45,7 @@ if (! test -e $SCRIPT/arduino2.desktop) then
 	sudo "[Desktop Entry]
 	Version=1.0
 	Type=Application
-	Name=Cura
+	Name=Arduino IDE 2
 	Comment=
 	Exec=/usr/local/bin/arduino-2
 	Icon=/usr/local/bin/arduino.svg
