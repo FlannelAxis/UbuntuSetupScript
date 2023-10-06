@@ -3,13 +3,13 @@
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 
-sudo apt-get update
-sudo apt-get purge bcmwl-kernel-source
-sudo apt-get install firmware-b43-installer
+sudo apt update
+sudo apt purge -y bcmwl-kernel-source
+sudo apt install -y firmware-b43-installer
 
 sudo apt install -y git build-essential curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
-sudo apt autoremove brltty
-sudo apt autoremove modemmanager
+sudo apt purge -y brltty
+sudo apt purge -y modemmanager
 
 sudo wget https://downloads.arduino.cc/arduino-ide/nightly/arduino-ide_nightly-latest_Linux_64bit.AppImage -O /usr/local/bin/arduino-2
 sudo chmod +x /usr/local/bin/arduino-2 
