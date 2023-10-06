@@ -11,6 +11,9 @@ sudo apt install -y git build-essential curl wget inkscape scratch docker.io  li
 sudo apt autoremove brltty
 sudo apt autoremove modemmanager
 
+sudo wget https://downloads.arduino.cc/arduino-ide/nightly/arduino-ide_nightly-latest_Linux_64bit.AppImage -O /usr/local/bin/arduino-2
+sudo chmod +x /usr/local/bin/arduino-2 
+
 SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 if (! test -e /usr/local/bin/cura) then
