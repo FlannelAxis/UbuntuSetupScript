@@ -1,10 +1,13 @@
 #!/bin/bash
 
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+
 sudo apt-get update
 sudo apt-get purge bcmwl-kernel-source
 sudo apt-get install firmware-b43-installer
 
-sudo apt install -y git curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3
+sudo apt install -y git curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
 sudo apt autoremove brltty
 sudo apt autoremove modemmanager
 
