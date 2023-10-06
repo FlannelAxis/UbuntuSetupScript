@@ -7,7 +7,7 @@ sudo apt update
 sudo apt purge -y bcmwl-kernel-source
 sudo apt install -y firmware-b43-installer
 
-sudo apt install -y git build-essential curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
+sudo apt install -y git ssh build-essential curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
 sudo apt purge -y brltty
 sudo apt purge -y modemmanager
 
@@ -114,6 +114,10 @@ sudo chmod 600  /etc/sssd/sssd.conf
 
 sudo mkdir -p /etc/skel/snap/firefox/common/
 sudo cp -r $SCRIPT/.mozilla/ /etc/skel/snap/firefox/common/
+
+echo "Copying over SSH keys"
+cat id_rsa.pub >> ~/.ssh/authorized_keys 
+cat id_ecdsa.pub  >> ~/.ssh/authorized_keys 
 
 
 
