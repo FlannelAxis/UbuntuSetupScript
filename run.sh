@@ -76,6 +76,8 @@ wget https://github.com/CommonWealthRobotics/ESP32ArduinoEclipseInstaller/releas
 sudo cp $SCRIPT/eclipse /usr/local/bin/eclipse
 sudo chmod +x /usr/local/bin/eclipse
 
+sudo sed -i 's/sudo/#sudo/g' /usr/local/bin/bowlerstudio
+sudo sed -i 's/pkexec/#pkexec/g' /usr/local/bin/eclipse
 echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
 sudo realm join -v bsch.bancroftschool.org
 sudo pam-auth-update --enable mkhomedir
