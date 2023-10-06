@@ -29,7 +29,7 @@ if (! test -e $CURADESKTOP) then
 		git clone https://github.com/Ultimaker/Cura.git $SCRIPT/Cura/
 	fi
 	sudo cp $SCRIPT/Cura/resources/images/cura-icon.png /usr/local/bin/cura-icon.png
-	sudo "[Desktop Entry]
+	echo "[Desktop Entry]
 	Version=1.0
 	Type=Application
 	Name=Cura
@@ -41,12 +41,11 @@ if (! test -e $CURADESKTOP) then
 	StartupNotify=false" > $CURADESKTOP
   	sudo chmod +x $CURADESKTOP
 	gio set $CURADESKTOP "metadata::trusted" yes
-
 	sudo desktop-file-install $CURADESKTOP
 fi
 if (! test -e $ARDUINODESKTOP) then
 	sudo wget https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg -O /usr/local/bin/arduino.svg
-	sudo "[Desktop Entry]
+	echo "[Desktop Entry]
 	Version=1.0
 	Type=Application
 	Name=Arduino IDE 2
@@ -58,7 +57,6 @@ if (! test -e $ARDUINODESKTOP) then
 	StartupNotify=false" > $ARDUINODESKTOP
  	sudo chmod +x $ARDUINODESKTOP
 	gio set $ARDUINODESKTOP "metadata::trusted" yes
-
 	sudo desktop-file-install $ARDUINODESKTOP
 fi
 
