@@ -7,7 +7,7 @@ sudo apt-get update
 sudo apt-get purge bcmwl-kernel-source
 sudo apt-get install firmware-b43-installer
 
-sudo apt install -y git curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
+sudo apt install -y git build-essential curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
 sudo apt autoremove brltty
 sudo apt autoremove modemmanager
 
