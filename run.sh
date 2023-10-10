@@ -145,6 +145,7 @@ else
 	sudo echo "ad_gpo_access_control = permissive" >> /etc/sssd/sssd.conf
 fi
 sudo echo "nameserver 10.88.0.8
+nameserver 10.88.0.9
 nameserver 127.0.0.53
 options edns0 trust-ad
 search .
