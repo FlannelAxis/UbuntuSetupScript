@@ -165,6 +165,7 @@ cat id_rsa.pub >> ~/.ssh/authorized_keys
 cat id_ecdsa.pub  >> ~/.ssh/authorized_keys 
 ifconfig
 sudo realm join -v bsch.bancroftschool.org
+sudo pam-auth-update --enable mkhomedir
 
 
 
