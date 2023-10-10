@@ -160,6 +160,8 @@ echo "Copying over SSH keys"
 cat id_rsa.pub >> ~/.ssh/authorized_keys 
 cat id_ecdsa.pub  >> ~/.ssh/authorized_keys 
 ifconfig
+sudo realm join -v bsch.bancroftschool.org
+
 
 
 
