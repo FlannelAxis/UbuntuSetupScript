@@ -136,7 +136,7 @@ else
 	echo "gsettings set org.gnome.desktop.notifications show-banners false" >> /etc/skel/.bashrc
 fi
 sudo chmod 777  /etc/sssd/sssd.conf
-sudo chmod 777  /etc/resolv.conf
+sudo chmod 777   /run/systemd/resolve/stub-resolv.conf
 
 #if grep -q ad_gpo_access_control /etc/sssd/sssd.conf; then
 #	echo "Initial setup detected for sssd.conf";
@@ -150,7 +150,7 @@ sudo cp $SCRIPT/resolv.conf  /run/systemd/resolve/stub-resolv.conf
 
 
 sudo chmod 600  /etc/sssd/sssd.conf
-sudo chmod 755  /etc/resolv.conf
+sudo chmod 755  /run/systemd/resolve/stub-resolv.conf
 
 echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
 sudo realm join -v bsch.bancroftschool.org
