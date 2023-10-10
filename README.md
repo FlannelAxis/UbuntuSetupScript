@@ -12,4 +12,5 @@ sudo apt install git
 git clone https://github.com/BancroftSchoolOpenSource/UbuntuSetupScript.git
 cd UbuntuSetupScript
 bash run.sh
+sudo login kharrington@bancroftschool.org
 ```
