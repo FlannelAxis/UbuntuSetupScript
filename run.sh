@@ -118,9 +118,7 @@ fi
 
 
 
-echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
-sudo realm join -v bsch.bancroftschool.org
-sudo pam-auth-update --enable mkhomedir
+
 sudo mkdir /etc/skel/.config
 
 
@@ -149,15 +147,15 @@ sudo chmod 777  /etc/resolv.conf
 
 sudo mkdir -p /etc/sssd/
 sudo cp $SCRIPT/sssd.conf /etc/sssd/
+sudo cp $SCRIPT/resolv.conf  /run/systemd/resolve/stub-resolv.conf
 
-sudo echo "nameserver 10.88.0.8
-nameserver 10.88.0.9
-nameserver 127.0.0.53
-options edns0 trust-ad
-search .
-" >  /etc/resolv.conf
 
 sudo chmod 600  /etc/sssd/sssd.conf
+sudo chmod 755  /etc/resolv.conf
+
+echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
+sudo realm join -v bsch.bancroftschool.org
+sudo pam-auth-update --enable mkhomedir
 
 sudo mkdir -p /etc/skel/snap/firefox/common/
 sudo cp -r $SCRIPT/.mozilla/ /etc/skel/snap/firefox/common/
@@ -166,8 +164,6 @@ echo "Copying over SSH keys"
 cat id_rsa.pub >> ~/.ssh/authorized_keys 
 cat id_ecdsa.pub  >> ~/.ssh/authorized_keys 
 ifconfig
-sudo realm join -v bsch.bancroftschool.org
-sudo pam-auth-update --enable mkhomedir
 
 
 
