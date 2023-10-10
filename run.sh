@@ -139,11 +139,15 @@ fi
 sudo chmod 777  /etc/sssd/sssd.conf
 sudo chmod 777  /etc/resolv.conf
 
-if grep -q ad_gpo_access_control /etc/sssd/sssd.conf; then
-	echo "Initial setup detected for sssd.conf";
-else
-	sudo echo "ad_gpo_access_control = permissive" >> /etc/sssd/sssd.conf
-fi
+#if grep -q ad_gpo_access_control /etc/sssd/sssd.conf; then
+#	echo "Initial setup detected for sssd.conf";
+#else
+#	sudo echo "ad_gpo_access_control = permissive" >> /etc/sssd/sssd.conf
+#fi
+
+sudo mkdir -p /etc/sssd/
+sudo cp $SCRIPT/sssd.conf /etc/sssd/
+
 sudo echo "nameserver 10.88.0.8
 nameserver 10.88.0.9
 nameserver 127.0.0.53
