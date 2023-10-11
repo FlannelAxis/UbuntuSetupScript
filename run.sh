@@ -135,26 +135,20 @@ if grep -q show-banners /etc/skel/.bashrc; then
 else
 	echo "gsettings set org.gnome.desktop.notifications show-banners false" >> /etc/skel/.bashrc
 fi
-sudo chmod 777  /etc/sssd/sssd.conf
+# Set the resolv.conf
 sudo chmod 777   /run/systemd/resolve/stub-resolv.conf
-
-#if grep -q ad_gpo_access_control /etc/sssd/sssd.conf; then
-#	echo "Initial setup detected for sssd.conf";
-#else
-#	sudo echo "ad_gpo_access_control = permissive" >> /etc/sssd/sssd.conf
-#fi
-
 sudo mkdir -p /etc/sssd/
-sudo cp $SCRIPT/sssd.conf /etc/sssd/
 sudo cp $SCRIPT/resolv.conf  /run/systemd/resolve/stub-resolv.conf
-
-
-sudo chmod 600  /etc/sssd/sssd.conf
 sudo chmod 755  /run/systemd/resolve/stub-resolv.conf
-
+#Join AD
 echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
 sudo realm join -v bsch.bancroftschool.org
 sudo pam-auth-update --enable mkhomedir
+
+# Use our configurations
+sudo chmod 777  /etc/sssd/sssd.conf
+sudo cp $SCRIPT/sssd.conf /etc/sssd/
+sudo chmod 600  /etc/sssd/sssd.conf
 
 sudo mkdir -p /etc/skel/snap/firefox/common/
 sudo cp -r $SCRIPT/.mozilla/ /etc/skel/snap/firefox/common/
@@ -162,7 +156,7 @@ sudo cp -r $SCRIPT/.mozilla/ /etc/skel/snap/firefox/common/
 echo "Copying over SSH keys"
 cat id_rsa.pub >> ~/.ssh/authorized_keys 
 cat id_ecdsa.pub  >> ~/.ssh/authorized_keys 
-ifconfig
+
 
 
 
