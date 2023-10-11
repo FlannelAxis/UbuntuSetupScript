@@ -156,13 +156,20 @@ sudo chmod 600  /etc/sssd/sssd.conf
 echo "Diff of /run/systemd/resolve/stub-resolv.conf and the intended file:"
 sudo diff /run/systemd/resolve/stub-resolv.conf $SCRIPT/resolv.conf
 
+echo "Copying over SSH keys"
+cat $SCRIPT/id_rsa.pub >> ~/.ssh/authorized_keys 
+cat $SCRIPT/id_ecdsa.pub  >> ~/.ssh/authorized_keys 
+
 #sudo mkdir -p /etc/skel/snap/firefox/common/
 #sudo cp -r $SCRIPT/.mozilla/ /etc/skel/snap/firefox/common/
 sudo rm -rf /etc/skel/snap/firefox/
+cd /home/
+for d in */ ; do
+    echo "Checking $d"
+done
 
-echo "Copying over SSH keys"
-cat id_rsa.pub >> ~/.ssh/authorized_keys 
-cat id_ecdsa.pub  >> ~/.ssh/authorized_keys 
+
+
 
 
 
