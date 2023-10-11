@@ -146,7 +146,7 @@ sudo realm join -v bsch.bancroftschool.org
 sudo pam-auth-update --enable mkhomedir
 
 # Use our configurations
-diff /etc/sssd/sssd.conf $SCRIPT/sssd.conf
+sudo diff /etc/sssd/sssd.conf $SCRIPT/sssd.conf
 sudo chmod 777  /etc/sssd/sssd.conf
 sudo cp $SCRIPT/sssd.conf /etc/sssd/
 sudo chmod 600  /etc/sssd/sssd.conf
