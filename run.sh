@@ -148,10 +148,13 @@ sudo pam-auth-update --enable mkhomedir
 
 # Use our configurations
 sudo chmod 777  /etc/sssd/sssd.conf
-echo "Diff of existing config file and the intended file:"
+echo "Diff of /etc/sssd/sssd.conf and the intended file:"
 sudo diff /etc/sssd/sssd.conf $SCRIPT/sssd.conf
 sudo cp $SCRIPT/sssd.conf /etc/sssd/
 sudo chmod 600  /etc/sssd/sssd.conf
+
+echo "Diff of /run/systemd/resolve/stub-resolv.conf and the intended file:"
+sudo diff /run/systemd/resolve/stub-resolv.conf $SCRIPT/resolv.conf
 
 sudo mkdir -p /etc/skel/snap/firefox/common/
 sudo cp -r $SCRIPT/.mozilla/ /etc/skel/snap/firefox/common/
