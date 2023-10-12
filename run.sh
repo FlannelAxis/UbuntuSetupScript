@@ -16,6 +16,8 @@ SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # Set the resolv.conf
 sudo chmod 777   /run/systemd/resolve/stub-resolv.conf
+echo "Diff of /run/systemd/resolve/stub-resolv.conf and the intended file:"
+sudo diff /run/systemd/resolve/stub-resolv.conf $SCRIPT/resolv.conf
 sudo mkdir -p /etc/sssd/
 sudo cp $SCRIPT/resolv.conf  /run/systemd/resolve/stub-resolv.conf
 sudo chmod 755  /run/systemd/resolve/stub-resolv.conf
@@ -31,8 +33,7 @@ sudo diff /etc/sssd/sssd.conf $SCRIPT/sssd.conf
 sudo cp $SCRIPT/sssd.conf /etc/sssd/
 sudo chmod 600  /etc/sssd/sssd.conf
 
-echo "Diff of /run/systemd/resolve/stub-resolv.conf and the intended file:"
-sudo diff /run/systemd/resolve/stub-resolv.conf $SCRIPT/resolv.conf
+
 
 if (! test -e /usr/local/bin/cura) then
 	curl -L https://github.com/Ultimaker/Cura/releases/download/5.4.0/UltiMaker-Cura-5.4.0-linux-modern.AppImage -o $SCRIPT/cura
