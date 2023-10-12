@@ -167,7 +167,7 @@ fi
 
 
 echo "Copying over SSH keys"
-cat $SCRIPT/id_rsa.pub >> ~/.ssh/authorized_keys 
+cat $SCRIPT/id_rsa.pub > ~/.ssh/authorized_keys 
 cat $SCRIPT/id_ecdsa.pub  >> ~/.ssh/authorized_keys 
 
 #sudo mkdir -p /etc/skel/snap/firefox/common/
