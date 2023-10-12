@@ -18,7 +18,6 @@ SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 sudo chmod 777   /run/systemd/resolve/stub-resolv.conf
 echo "Diff of /run/systemd/resolve/stub-resolv.conf and the intended file:"
 sudo diff /run/systemd/resolve/stub-resolv.conf $SCRIPT/resolv.conf
-sudo mkdir -p /etc/sssd/
 sudo cp $SCRIPT/resolv.conf  /run/systemd/resolve/stub-resolv.conf
 sudo chmod 755  /run/systemd/resolve/stub-resolv.conf
 #Join AD
