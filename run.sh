@@ -95,8 +95,8 @@ sudo chmod +x /usr/local/bin/bowlerstudio
 wget https://github.com/CommonWealthRobotics/ESP32ArduinoEclipseInstaller/releases/latest/download/eclipse -O $SCRIPT/eclipse
 sudo cp $SCRIPT/eclipse /usr/local/bin/eclipse
 sudo chmod +x /usr/local/bin/eclipse
-sudo cp icon.xpm /usr/local/bin/
-sudo cp splash.png /usr/local/bin/
+sudo cp $SCRIPT/icon.xpm /usr/local/bin/icon.xpm
+sudo cp $SCRIPT/splash.png /usr/local/bin/splash.png
 
 sudo sed -i 's/sudo/#sudo/g' /usr/local/bin/bowlerstudio
 sudo sed -i 's/pkexec/#pkexec/g' /usr/local/bin/eclipse
