@@ -20,7 +20,13 @@ echo "Diff of /run/systemd/resolve/stub-resolv.conf and the intended file:"
 sudo diff /run/systemd/resolve/stub-resolv.conf $SCRIPT/resolv.conf
 sudo cp $SCRIPT/resolv.conf  /run/systemd/resolve/stub-resolv.conf
 sudo chmod 755  /run/systemd/resolve/stub-resolv.conf
+
 #Join AD
+#Set the sssd to default to begin
+sudo cp /usr/lib/x86_64-linux-gnu/sssd/conf/sssd.conf /etc/sssd/
+sudo chmod 600 /etc/sssd/sssd.conf 
+sudo systemctl enable sssd
+sudo systemctl start sssd
 echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
 sudo realm join -v bsch.bancroftschool.org
 sudo pam-auth-update --enable mkhomedir
@@ -31,6 +37,9 @@ echo "Diff of /etc/sssd/sssd.conf and the intended file:"
 sudo diff /etc/sssd/sssd.conf $SCRIPT/sssd.conf
 sudo cp $SCRIPT/sssd.conf /etc/sssd/
 sudo chmod 600  /etc/sssd/sssd.conf
+# restart sssd to finish setup
+sudo systemctl enable sssd
+sudo systemctl start sssd
 
 
 
