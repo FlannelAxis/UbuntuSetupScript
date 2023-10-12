@@ -86,6 +86,7 @@ if (! test -e $SCRATCHJR) then
 	cd $SCRATCHJR
 	npm install && npm run publish
 	sudo dpkg -i $SCRATCHJR/out/make/scratchjr*.deb
+ 	cd $SCRIPT/
 fi
 
 wget https://github.com/CommonWealthRobotics/Installer-Linux-BowlerStudio/releases/latest/download/bowlerstudio -O $SCRIPT/bowlerstudio
