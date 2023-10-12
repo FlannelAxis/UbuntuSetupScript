@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+set -e
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 
@@ -41,7 +41,7 @@ sudo chmod 600  /etc/sssd/sssd.conf
 sudo systemctl enable sssd
 sudo systemctl start sssd
 
-
+set +e
 
 if (! test -e /usr/local/bin/cura) then
 	curl -L https://github.com/Ultimaker/Cura/releases/download/5.4.0/UltiMaker-Cura-5.4.0-linux-modern.AppImage -o $SCRIPT/cura
