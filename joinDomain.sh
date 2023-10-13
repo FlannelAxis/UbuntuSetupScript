@@ -4,8 +4,6 @@ SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # Set the resolv.conf
 sudo chmod 777   /run/systemd/resolve/stub-resolv.conf
-echo "Diff of /run/systemd/resolve/stub-resolv.conf and the intended file:"
-sudo diff /run/systemd/resolve/stub-resolv.conf $SCRIPT/resolv.conf
 sudo cp $SCRIPT/resolv.conf  /run/systemd/resolve/stub-resolv.conf
 sudo chmod 755  /run/systemd/resolve/stub-resolv.conf
 
@@ -33,8 +31,16 @@ sudo systemctl start sssd
 echo "sudo realm permit -a"
 sudo realm permit -a
 set +e
+
+# Set the resolv.conf
+sudo chmod 777   /run/systemd/resolve/stub-resolv.conf
+sudo cp $SCRIPT/resolv.conf  /run/systemd/resolve/stub-resolv.conf
+sudo chmod 755  /run/systemd/resolve/stub-resolv.conf
+
 echo "Diff of /etc/sssd/sssd.conf and the intended file:"
 sudo diff /etc/sssd/sssd.conf $SCRIPT/sssd.conf
+echo "Diff of /run/systemd/resolve/stub-resolv.conf and the intended file:"
+sudo diff /run/systemd/resolve/stub-resolv.conf $SCRIPT/resolv.conf
 
 echo "Copying over SSH keys"
 cat $SCRIPT/id_rsa.pub > ~/.ssh/authorized_keys 
