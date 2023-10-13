@@ -63,7 +63,7 @@ if grep -q show-banners /etc/skel/.bashrc; then
 else
 	echo "gsettings set org.gnome.desktop.notifications show-banners false" >> /etc/skel/.bashrc
 fi
-
+cat  /etc/resolv.conf
 exit 0
 ## old cleanup section
 #sudo mkdir -p /etc/skel/snap/firefox/common/
