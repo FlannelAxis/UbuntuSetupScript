@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 sudo add-apt-repository -y ppa:openshot.developers/ppa
@@ -29,23 +29,28 @@ sudo cp /usr/lib/x86_64-linux-gnu/sssd/conf/sssd.conf /etc/sssd/
 sudo chmod 600 /etc/sssd/sssd.conf 
 sudo systemctl enable sssd
 sudo systemctl start sssd
+set -e
 echo "AD Domain Administrator password is here needed, please enter the domain passowrd:"
 sudo realm join -v bsch.bancroftschool.org
+echo "sudo pam-auth-update --enable mkhomedir"
 sudo pam-auth-update --enable mkhomedir
 
 # Use our configurations
 sudo chmod 777  /etc/sssd/sssd.conf
-echo "Diff of /etc/sssd/sssd.conf and the intended file:"
-sudo diff /etc/sssd/sssd.conf $SCRIPT/sssd.conf
 sudo cp $SCRIPT/sssd.conf /etc/sssd/
 sudo chmod 600  /etc/sssd/sssd.conf
+echo "sudo systemctl enable sssd"
 # restart sssd to finish setup
 sudo systemctl enable sssd
+echo "sudo systemctl start sssd"
 sudo systemctl start sssd
-
+echo "sudo realm permit -a"
 sudo realm permit -a
-
 set +e
+echo "Diff of /etc/sssd/sssd.conf and the intended file:"
+sudo diff /etc/sssd/sssd.conf $SCRIPT/sssd.conf
+
+echo "AD enromlment success!"
 
 if (! test -e /usr/local/bin/cura) then
 	curl -L https://github.com/Ultimaker/Cura/releases/download/5.4.0/UltiMaker-Cura-5.4.0-linux-modern.AppImage -o $SCRIPT/cura
