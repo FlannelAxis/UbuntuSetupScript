@@ -40,7 +40,7 @@ sudo chmod 755  /etc/resolv.conf
 echo "Diff of /etc/sssd/sssd.conf and the intended file:"
 sudo diff /etc/sssd/sssd.conf $SCRIPT/sssd.conf
 echo "Diff of /run/systemd/resolve/stub-resolv.conf and the intended file:"
-sudo diff /run/systemd/resolve/stub-resolv.conf $SCRIPT/resolv.conf
+sudo diff  /etc/resolv.conf $SCRIPT/resolv.conf
 
 echo "Copying over SSH keys"
 cat $SCRIPT/id_rsa.pub > ~/.ssh/authorized_keys 
@@ -64,7 +64,8 @@ else
 	echo "gsettings set org.gnome.desktop.notifications show-banners false" >> /etc/skel/.bashrc
 fi
 
-
+exit 0
+## old cleanup section
 #sudo mkdir -p /etc/skel/snap/firefox/common/
 #sudo cp -r $SCRIPT/.mozilla/ /etc/skel/snap/firefox/common/
 sudo rm -rf /etc/skel/snap/firefox/
