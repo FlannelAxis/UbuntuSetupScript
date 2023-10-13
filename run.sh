@@ -3,9 +3,9 @@
 set -e
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-sudo add-apt-repository ppa:openshot.developers/ppa
+sudo add-apt-repository -y ppa:openshot.developers/ppa
 
-sudo apt update
+sudo apt -y update
 sudo apt upgrade
 sudo apt purge -y bcmwl-kernel-source
 sudo apt install -y firmware-b43-installer
