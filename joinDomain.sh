@@ -40,6 +40,25 @@ echo "Copying over SSH keys"
 cat $SCRIPT/id_rsa.pub > ~/.ssh/authorized_keys 
 cat $SCRIPT/id_ecdsa.pub  >> ~/.ssh/authorized_keys 
 
+sudo mkdir /etc/skel/.config
+
+
+sudo touch /etc/skel/.config/gnome-initial-setup-done
+sudo chmod -R 777 /etc/skel/.config/
+sudo chmod -R 777 /etc/skel/.bashrc
+if grep -q yes /etc/skel/.config/gnome-initial-setup-done; then
+  echo "Initial setup detected for DO Not Disturb";
+else
+  echo "yes" >> /etc/skel/.config/gnome-initial-setup-done;
+fi
+
+if grep -q show-banners /etc/skel/.bashrc; then
+	echo "Initial setup detected for .bashrc";
+else
+	echo "gsettings set org.gnome.desktop.notifications show-banners false" >> /etc/skel/.bashrc
+fi
+
+
 #sudo mkdir -p /etc/skel/snap/firefox/common/
 #sudo cp -r $SCRIPT/.mozilla/ /etc/skel/snap/firefox/common/
 sudo rm -rf /etc/skel/snap/firefox/
