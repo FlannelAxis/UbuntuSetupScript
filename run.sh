@@ -43,6 +43,8 @@ sudo chmod 600  /etc/sssd/sssd.conf
 sudo systemctl enable sssd
 sudo systemctl start sssd
 
+sudo realm permit -a
+
 set +e
 
 if (! test -e /usr/local/bin/cura) then
