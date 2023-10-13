@@ -188,7 +188,7 @@ for d in */ ; do
     sudo rm -rf /home/$d/snap/firefox/
 done
 
-
+echo "Script complete, machine set up for Bancroft School!"
 
 
 
