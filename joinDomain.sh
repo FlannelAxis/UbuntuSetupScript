@@ -33,9 +33,9 @@ sudo realm permit -a
 set +e
 
 # Set the resolv.conf
-sudo chmod 777   /run/systemd/resolve/stub-resolv.conf
-sudo cp $SCRIPT/resolv.conf  /run/systemd/resolve/stub-resolv.conf
-sudo chmod 755  /run/systemd/resolve/stub-resolv.conf
+sudo rm /etc/resolv.conf
+sudo cp $SCRIPT/resolv.conf  /etc/resolv.conf
+sudo chmod 755  /etc/resolv.conf
 
 echo "Diff of /etc/sssd/sssd.conf and the intended file:"
 sudo diff /etc/sssd/sssd.conf $SCRIPT/sssd.conf
