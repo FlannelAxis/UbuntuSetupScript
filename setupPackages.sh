@@ -10,6 +10,12 @@ sudo apt  -y upgrade
 sudo apt purge -y bcmwl-kernel-source
 sudo apt install -y firmware-b43-installer
 
+GITHUBDESKTOP=GitHubDesktop-linux-amd64-3.3.3-linux2.deb
+if (! test -e $GITHUBDESKTOP) then
+	wget https://github.com/shiftkey/desktop/releases/download/release-3.3.3-linux2/$GITHUBDESKTOP
+	sudi dpkg -i $GITHUBDESKTOP
+fi
+
 sudo apt install -y git openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
 sudo apt purge -y brltty
 sudo apt purge -y modemmanager
