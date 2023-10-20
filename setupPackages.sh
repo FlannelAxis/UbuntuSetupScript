@@ -14,6 +14,8 @@ GITHUBDESKTOP=GitHubDesktop-linux-amd64-3.3.3-linux2.deb
 if (! test -e $GITHUBDESKTOP) then
 	wget https://github.com/shiftkey/desktop/releases/download/release-3.3.3-linux2/$GITHUBDESKTOP
 	sudi dpkg -i $GITHUBDESKTOP
+else
+	echo "$GITHUBDESKTOP installed "
 fi
 
 sudo apt install -y git openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
