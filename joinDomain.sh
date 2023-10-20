@@ -72,5 +72,5 @@ sudo rm -rf /etc/skel/snap/firefox/
 cd /home/
 for d in */ ; do
     echo "Checking $d"
-    sudo rm -rf /home/$d/snap/firefox/
+    #sudo rm -rf /home/$d/snap/firefox/
 done
