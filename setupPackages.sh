@@ -54,7 +54,7 @@ if (! test -e $CURADESKTOP) then
 	sudo desktop-file-install $CURADESKTOP
 fi
 if (! test -e $ARDUINODESKTOP) then
-	sudo wget https://downloads.arduino.cc/arduino-ide/nightly/arduino-ide_nightly-latest_Linux_64bit.AppImage -O /usr/local/bin/arduino-2
+	sudo wget https://downloads.arduino.cc/arduino-ide/arduino-ide_2.2.1_Linux_64bit.AppImage -O /usr/local/bin/arduino-2
 	sudo chmod +x /usr/local/bin/arduino-2 
 	sudo wget https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg -O /usr/local/bin/arduino.svg
 	echo "[Desktop Entry]
