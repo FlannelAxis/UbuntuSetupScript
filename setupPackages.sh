@@ -18,9 +18,8 @@ else
 	echo "$GITHUBDESKTOP installed "
 fi
 
-sudo apt install -y git libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
-sudo apt purge -y brltty
-sudo apt purge -y modemmanager
+sudo apt install -y git libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
+sudo apt purge -y modemmanager scratch brltty
 
 SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -127,15 +126,23 @@ if (! test -e $DESKTOP_FILE) then
 	sudo desktop-file-install $DESKTOP_FILE
 fi
 
+SCRATCH3=scratch-desktop_3.3.0_amd64.deb
+if (! test -e $SCRATCH3) then
+	wget https://github.com/redshaderobotics/scratch3.0-linux/releases/download/3.3.0/scratch-desktop_3.3.0_amd64.deb -O $SCRIPT/$SCRATCH3
+	sudo dpkg -i $SCRATCH3
+fi
 
 
 ## old cleanup section
-EXCEPTION_ZIP=EspExceptionDecoder-2.0.3.zip
+EXCEPTION_ZIP=esp-exception-decoder-1.0.2.vsix 
+# https://github.com/dankeboy36/esp-exception-decoder
+
 sudo mkdir -p /etc/skel/Arduino/tools/
 if (! test -e $EXCEPTION_ZIP) then
 
-	wget https://github.com/me-no-dev/EspExceptionDecoder/releases/download/2.0.3/$EXCEPTION_ZIP -O $EXCEPTION_ZIP	
-	sudo unzip $EXCEPTION_ZIP -d /etc/skel/Arduino/tools/
+	wget https://github.com/dankeboy36/esp-exception-decoder/releases/download/1.0.2/$EXCEPTION_ZIP	 -O $SCRIPT/$EXCEPTION_ZIP	
+	sudo mkdir -p /etc/skel/.arduinoIDE/plugins/
+	sudo cp $SCRIPT/$EXCEPTION_ZIP	 /etc/skel/.arduinoIDE/plugins/
 fi
 
 sudo mkdir -p /etc/skel/.config
@@ -145,14 +152,16 @@ cd /home/
 for d in */ ; do
     TRIMMED=$(basename $d);
     echo "Checking $TRIMMED"
-    sudo mkdir -p /home/$TRIMMED/Arduino/tools/EspExceptionDecoder/tool/
-    sudo cp  /etc/skel/Arduino/tools/EspExceptionDecoder/tool/EspExceptionDecoder.jar /home/$TRIMMED/Arduino/tools/EspExceptionDecoder/tool/
-    sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/Arduino/
-    if (! test -d $SCRIPT/.config/cura/) then
+    sudo mkdir -p /home/$TRIMMED/.arduinoIDE/plugins/
+    sudo cp $SCRIPT/$EXCEPTION_ZIP /home/$TRIMMED/.arduinoIDE/plugins/
+    sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/.arduinoIDE/plugins/
+    echo "sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/Arduino/"
+    if (! test -d /home/$TRIMMED/.config/cura/) then
     	    echo "Updating cura config for $TRIMMED"
 	    sudo cp -r $SCRIPT/.config/cura/  /home/$TRIMMED/.config/
     fi
     sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/.config/
+    echo "sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/.config/"
 done
 
 
