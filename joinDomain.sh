@@ -64,13 +64,4 @@ else
 	echo "gsettings set org.gnome.desktop.notifications show-banners false" >> /etc/skel/.bashrc
 fi
 cat  /etc/resolv.conf
-exit 0
-## old cleanup section
-#sudo mkdir -p /etc/skel/snap/firefox/common/
-#sudo cp -r $SCRIPT/.mozilla/ /etc/skel/snap/firefox/common/
-sudo rm -rf /etc/skel/snap/firefox/
-cd /home/
-for d in */ ; do
-    echo "Checking $d"
-    #sudo rm -rf /home/$d/snap/firefox/
-done
+

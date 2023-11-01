@@ -138,16 +138,21 @@ if (! test -e $EXCEPTION_ZIP) then
 	sudo unzip $EXCEPTION_ZIP -d /etc/skel/Arduino/tools/
 fi
 
-
+sudo mkdir -p /etc/skel/.config
+sudo cp -r $SCRIPT/.config/cura/ /etc/skel/.config/
 
 cd /home/
 for d in */ ; do
     TRIMMED=$(basename $d);
     echo "Checking $TRIMMED"
-    sudo mkdir -P /home/$TRIMMED/Arduino/tools/EspExceptionDecoder/tool/
+    sudo mkdir -p /home/$TRIMMED/Arduino/tools/EspExceptionDecoder/tool/
     sudo cp  /etc/skel/Arduino/tools/EspExceptionDecoder/tool/EspExceptionDecoder.jar /home/$TRIMMED/Arduino/tools/EspExceptionDecoder/tool/
     sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/Arduino/tools/
-    #sudo rm -rf /home/$d/snap/firefox/
+    if (! test -d $SCRIPT/.config/cura/) then
+    	    echo "Updating cura config for $TRIMMED"
+	    sudo cp -r $SCRIPT/.config/cura/  /home/$TRIMMED/.config/
+	    sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/.config/cura/
+    fi
 done
 
 
