@@ -1,5 +1,0 @@
-incoming.telemetry.mozilla.org	0	19632	1727792078002,1,0
-ac.duckduckgo.com^firstPartyDomain=ddg.search.suggestions.mozilla	0	19632	1727792197578,1,0
-duckduckgo.com^partitionKey=%28https%2Cduckduckgo.com%29	0	19632	1727792044905,1,0
-spocs.getpocket.com	0	19632	1759328082248,1,0
-aus5.mozilla.org	0	19632	1727792179482,1,0
