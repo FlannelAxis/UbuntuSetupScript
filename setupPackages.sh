@@ -18,7 +18,7 @@ else
 	echo "$GITHUBDESKTOP installed "
 fi
 
-sudo apt install -y git mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
+sudo apt install -y git libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape scratch docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
 sudo apt purge -y brltty
 sudo apt purge -y modemmanager
 
@@ -129,7 +129,26 @@ fi
 
 
 
+## old cleanup section
+EXCEPTION_ZIP=EspExceptionDecoder-2.0.3.zip
+sudo mkdir -p /etc/skel/Arduino/tools/
+if (! test -e $EXCEPTION_ZIP) then
 
+	wget https://github.com/me-no-dev/EspExceptionDecoder/releases/download/2.0.3/$EXCEPTION_ZIP -O $EXCEPTION_ZIP	
+	sudo unzip $EXCEPTION_ZIP -d /etc/skel/Arduino/tools/
+fi
+
+
+
+cd /home/
+for d in */ ; do
+    TRIMMED=$(basename $d);
+    echo "Checking $TRIMMED"
+    sudo mkdir -P /home/$TRIMMED/Arduino/tools/EspExceptionDecoder/tool/
+    sudo cp  /etc/skel/Arduino/tools/EspExceptionDecoder/tool/EspExceptionDecoder.jar /home/$TRIMMED/Arduino/tools/EspExceptionDecoder/tool/
+    sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/Arduino/tools/
+    #sudo rm -rf /home/$d/snap/firefox/
+done
 
 
 
