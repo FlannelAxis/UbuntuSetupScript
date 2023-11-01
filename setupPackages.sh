@@ -147,12 +147,12 @@ for d in */ ; do
     echo "Checking $TRIMMED"
     sudo mkdir -p /home/$TRIMMED/Arduino/tools/EspExceptionDecoder/tool/
     sudo cp  /etc/skel/Arduino/tools/EspExceptionDecoder/tool/EspExceptionDecoder.jar /home/$TRIMMED/Arduino/tools/EspExceptionDecoder/tool/
-    sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/Arduino/tools/
+    sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/Arduino/
     if (! test -d $SCRIPT/.config/cura/) then
     	    echo "Updating cura config for $TRIMMED"
 	    sudo cp -r $SCRIPT/.config/cura/  /home/$TRIMMED/.config/
-	    sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/.config/cura/
     fi
+    sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/.config/
 done
 
 
