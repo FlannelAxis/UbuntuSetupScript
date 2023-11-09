@@ -154,13 +154,13 @@ for d in */ ; do
     echo "Checking $TRIMMED"
     sudo mkdir -p /home/$TRIMMED/.arduinoIDE/plugins/
     sudo cp $SCRIPT/$EXCEPTION_ZIP /home/$TRIMMED/.arduinoIDE/plugins/
-    sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/.arduinoIDE/plugins/
+    sudo chmod -R 777 /home/$TRIMMED/.arduinoIDE/plugins/
     echo "sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/Arduino/"
     if (! test -d /home/$TRIMMED/.config/cura/) then
     	    echo "Updating cura config for $TRIMMED"
 	    sudo cp -r $SCRIPT/.config/cura/  /home/$TRIMMED/.config/
     fi
-    sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/.config/
+    sudo chmod -R 777 /home/$TRIMMED/.config/
     echo "sudo chown -R $TRIMMED:$TRIMMED /home/$TRIMMED/.config/"
 done
 
