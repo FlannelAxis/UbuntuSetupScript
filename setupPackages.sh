@@ -24,7 +24,8 @@ sudo apt purge -y modemmanager scratch brltty
 sudo pip install pyserial
 
 sudo cp $SCRIPT/81-bancroft.rules /etc/udev/
-sudo udevadm control --reload-rules
+sudo udevadm control --reload-rules 
+sudo udevadm trigger
 
 echo "AD enromlment success!"
 
