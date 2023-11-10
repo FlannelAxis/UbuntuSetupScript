@@ -18,9 +18,9 @@ else
 	echo "$GITHUBDESKTOP installed "
 fi
 
-sudo apt install -y git pyserial libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
+sudo apt install -y git python3-pip pyserial libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
 sudo apt purge -y modemmanager scratch brltty
-
+pip install pyserial
 SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 echo "AD enromlment success!"
