@@ -23,7 +23,7 @@ sudo apt install -y git python3-pip libncurses5 libpython2.7 mesa-utils openshot
 sudo apt purge -y modemmanager scratch brltty
 sudo pip install pyserial
 
-sudo cp $SCRIPT/81-bancroft.rules /etc/udev/
+sudo cp $SCRIPT/81-bancroft.rules /etc/udev/rules.d/
 sudo udevadm control --reload-rules 
 sudo udevadm trigger
 
