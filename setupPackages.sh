@@ -168,6 +168,7 @@ for d in */ ; do
     echo "    sudo chmod -R 777 /home/$TRIMMED/.config/"
 done
 
+sudo lpadmin -p MDC_LAB -E -v ipp://10.88.5.129/ipp/print -m everywhere 
 
 
 
