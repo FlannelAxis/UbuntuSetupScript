@@ -163,6 +163,7 @@ for d in */ ; do
     	    echo "Updating cura config for $TRIMMED"
 	    sudo cp -r $SCRIPT/.config/cura/  /home/$TRIMMED/.config/
     fi
+    sudo mkdir -p /home/$TRIMMED/Desktop/
     sudo chown -R $TMP:$TMP /home/$TRIMMED/
 done
 
