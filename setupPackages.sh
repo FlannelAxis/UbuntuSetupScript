@@ -10,10 +10,11 @@ sudo apt update
 sudo apt  -y upgrade
 sudo apt purge -y bcmwl-kernel-source
 sudo apt install -y firmware-b43-installer
-
-GITHUBDESKTOP=GitHubDesktop-linux-amd64-3.3.3-linux2.deb
+GITHUBDESKTOPRELEASE=3.3.5-linux2
+#https://github.com/shiftkey/desktop/releases/download/release-3.3.5-linux2/GitHubDesktop-linux-amd64-3.3.5-linux2.deb
+GITHUBDESKTOP=GitHubDesktop-linux-amd64-$GITHUBDESKTOPRELEASE.deb
 if (! test -e $GITHUBDESKTOP) then
-	wget https://github.com/shiftkey/desktop/releases/download/release-3.3.3-linux2/$GITHUBDESKTOP
+	wget https://github.com/shiftkey/desktop/releases/download/release-$GITHUBDESKTOPRELEASE/$GITHUBDESKTOP
 	sudo dpkg -i $GITHUBDESKTOP
 else
 	echo "$GITHUBDESKTOP installed "
