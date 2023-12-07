@@ -156,16 +156,14 @@ cd /home/
 for d in */ ; do
     TRIMMED=$(basename $d);
     echo "Checking $TRIMMED"
+    TMP=$(id -u $TRIMMED)
     sudo mkdir -p /home/$TRIMMED/.arduinoIDE/plugins/
     sudo cp $SCRIPT/$EXCEPTION_ZIP /home/$TRIMMED/.arduinoIDE/plugins/
-    sudo chmod -R 777 /home/$TRIMMED/.arduinoIDE/
-    echo "   sudo chmod -R 777 /home/$TRIMMED/.arduinoIDE/plugins/"
     if (! test -d /home/$TRIMMED/.config/cura/) then
     	    echo "Updating cura config for $TRIMMED"
 	    sudo cp -r $SCRIPT/.config/cura/  /home/$TRIMMED/.config/
     fi
-    sudo chmod -R 777 /home/$TRIMMED/.config/
-    echo "    sudo chmod -R 777 /home/$TRIMMED/.config/"
+    sudo chown -R $TMP:$TMP /home/$TRIMMED/
 done
 
 sudo lpadmin -p MDC_LAB -E -v ipp://10.88.5.129/ipp/print -m everywhere 
