@@ -149,6 +149,9 @@ if (! test -e $EXCEPTION_ZIP) then
 	sudo mkdir -p /etc/skel/.arduinoIDE/plugins/
 	sudo cp $SCRIPT/$EXCEPTION_ZIP	 /etc/skel/.arduinoIDE/plugins/
 fi
+sudo mkdir -p /tmp/arduino/sketches/
+sudo mkdir -p /tmp/arduino/cores/
+sudo chmod 777 -R /tmp/arduino/
 
 sudo mkdir -p /etc/skel/.config
 sudo cp -r $SCRIPT/.config/cura/ /etc/skel/.config/
@@ -165,8 +168,10 @@ for d in */ ; do
 	    sudo cp -r $SCRIPT/.config/cura/  /home/$TRIMMED/.config/
     fi
     sudo mkdir -p /home/$TRIMMED/Desktop/
+    
     sudo chown -R $TMP:$TMP /home/$TRIMMED/
 done
+
 
 sudo lpadmin -p MDC_LAB -E -v ipp://10.88.5.129/ipp/print -m everywhere 
 
