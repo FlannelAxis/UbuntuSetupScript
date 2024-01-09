@@ -7,3 +7,7 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523",MODE="0777",
 SUBSYSTEM=="usb", DRIVER=="usb", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="0002",  MODE="0777"
 # Lego NXT brick in firmware update mode (Atmel SAM-BA mode)
 SUBSYSTEM=="usb", DRIVER=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="6124",  MODE="0777"
+
+SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", MODE="0777", GROUP="plugdev"
+
+
