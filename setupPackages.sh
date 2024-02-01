@@ -170,8 +170,9 @@ for d in */ ; do
 	    sudo cp -r $SCRIPT/.config/cura/  /home/$TRIMMED/.config/
     fi
     sudo mkdir -p /home/$TRIMMED/Desktop/
-    
+    sudo rm -rf /home/$TRIMMED/.config/google-chrome/Singleton*
     sudo chown -R $TMP:$TMP /home/$TRIMMED/
+    
 done
 
 
