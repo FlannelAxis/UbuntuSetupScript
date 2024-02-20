@@ -34,7 +34,7 @@ sudo cp $SCRIPT/81-bancroft.rules /etc/udev/rules.d/
 sudo udevadm control --reload-rules 
 sudo udevadm trigger
 
-echo "AD enromlment success!"
+
 
 if (! test -e /usr/local/bin/cura) then
 	curl -L https://github.com/Ultimaker/Cura/releases/download/5.4.0/UltiMaker-Cura-5.4.0-linux-modern.AppImage -o $SCRIPT/cura
