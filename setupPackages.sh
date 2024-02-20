@@ -26,6 +26,10 @@ sudo apt install -y git  texstudio python3-pip libncurses5 libpython2.7 mesa-uti
 sudo apt purge -y modemmanager scratch brltty
 sudo pip install pyserial
 
+
+sudo snap install blender --classic
+
+
 sudo cp $SCRIPT/81-bancroft.rules /etc/udev/rules.d/
 sudo udevadm control --reload-rules 
 sudo udevadm trigger
