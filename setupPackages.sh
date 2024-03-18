@@ -44,6 +44,7 @@ fi
 ICON=$SCRIPT/Cura/resources/images/cura-icon.png
 CURADESKTOP=$SCRIPT/Cura-5.4.desktop
 ARDUINODESKTOP=$SCRIPT/Arduino-2.desktop
+MESHLAB=$SCRIPT/MashLab.desktop
 if (! test -e $CURADESKTOP) then
 	if (! test -e $ICON) then
 		git clone https://github.com/Ultimaker/Cura.git $SCRIPT/Cura/
@@ -80,6 +81,25 @@ if (! test -e $ARDUINODESKTOP) then
  	sudo chmod +x $ARDUINODESKTOP
 	gio set $ARDUINODESKTOP "metadata::trusted" yes
 	sudo desktop-file-install $ARDUINODESKTOP
+fi
+
+if (! test -e $MESHLAB) then
+	sudo wget https://github.com/cnr-isti-vclab/meshlab/releases/download/MeshLab-2023.12/MeshLab2023.12-linux.AppImage -O /usr/local/bin/mashlab
+	sudo chmod +x /usr/local/bin/mashlab 
+	cp $SCRIPT/meshlab.png /usr/local/bin/meshlab.png
+	echo "[Desktop Entry]
+	Version=1.0
+	Type=Application
+	Name=Mesh Lab
+	Comment=
+	Exec=/usr/local/bin/mashlab
+	Icon=/usr/local/bin/meshlab.png
+	Path=
+	Terminal=false
+	StartupNotify=false" > $MESHLAB
+ 	sudo chmod +x $MESHLAB
+	gio set $MESHLAB "metadata::trusted" yes
+	sudo desktop-file-install $MESHLAB
 fi
 
 SCRATCHJR=$SCRIPT/ScratchJr-Desktop/
