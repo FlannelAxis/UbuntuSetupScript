@@ -86,7 +86,7 @@ fi
 if (! test -e $MESHLAB) then
 	sudo wget https://github.com/cnr-isti-vclab/meshlab/releases/download/MeshLab-2023.12/MeshLab2023.12-linux.AppImage -O /usr/local/bin/mashlab
 	sudo chmod +x /usr/local/bin/mashlab 
-	cp $SCRIPT/meshlab.png /usr/local/bin/meshlab.png
+	sudo cp $SCRIPT/meshlab.png /usr/local/bin/meshlab.png
 	echo "[Desktop Entry]
 	Version=1.0
 	Type=Application
