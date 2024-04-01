@@ -9,6 +9,7 @@ SUBSYSTEM=="usb", DRIVER=="usb", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="000
 SUBSYSTEM=="usb", DRIVER=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="6124",  MODE="0777"
 #0x03eb and PID list: 0x2145
 SUBSYSTEM=="tty", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2145",MODE="0777", SYMLINK+="uno-%n"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043",MODE="0777", SYMLINK+="uno-%n"
 SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2145", MODE="0777", ENV{ID_MM_DEVICE_IGNORE}="1"
 
 SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", MODE="0777", GROUP="plugdev"
