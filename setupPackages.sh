@@ -26,11 +26,15 @@ sudo apt install -y git  texstudio python3-pip libncurses5 libpython2.7 mesa-uti
 sudo apt purge -y modemmanager scratch brltty
 sudo pip install pyserial
 
+
+sudo snap install blender --classic
+
+
 sudo cp $SCRIPT/81-bancroft.rules /etc/udev/rules.d/
 sudo udevadm control --reload-rules 
 sudo udevadm trigger
 
-echo "AD enromlment success!"
+
 
 if (! test -e /usr/local/bin/cura) then
 	curl -L https://github.com/Ultimaker/Cura/releases/download/5.4.0/UltiMaker-Cura-5.4.0-linux-modern.AppImage -o $SCRIPT/cura
@@ -40,6 +44,7 @@ fi
 ICON=$SCRIPT/Cura/resources/images/cura-icon.png
 CURADESKTOP=$SCRIPT/Cura-5.4.desktop
 ARDUINODESKTOP=$SCRIPT/Arduino-2.desktop
+MESHLAB=$SCRIPT/MashLab.desktop
 if (! test -e $CURADESKTOP) then
 	if (! test -e $ICON) then
 		git clone https://github.com/Ultimaker/Cura.git $SCRIPT/Cura/
@@ -76,6 +81,25 @@ if (! test -e $ARDUINODESKTOP) then
  	sudo chmod +x $ARDUINODESKTOP
 	gio set $ARDUINODESKTOP "metadata::trusted" yes
 	sudo desktop-file-install $ARDUINODESKTOP
+fi
+
+if (! test -e $MESHLAB) then
+	sudo wget https://github.com/cnr-isti-vclab/meshlab/releases/download/MeshLab-2023.12/MeshLab2023.12-linux.AppImage -O /usr/local/bin/mashlab
+	sudo chmod +x /usr/local/bin/mashlab 
+	sudo cp $SCRIPT/meshlab.png /usr/local/bin/meshlab.png
+	echo "[Desktop Entry]
+	Version=1.0
+	Type=Application
+	Name=Mesh Lab
+	Comment=
+	Exec=/usr/local/bin/mashlab
+	Icon=/usr/local/bin/meshlab.png
+	Path=
+	Terminal=false
+	StartupNotify=false" > $MESHLAB
+ 	sudo chmod +x $MESHLAB
+	gio set $MESHLAB "metadata::trusted" yes
+	sudo desktop-file-install $MESHLAB
 fi
 
 SCRATCHJR=$SCRIPT/ScratchJr-Desktop/
@@ -170,8 +194,9 @@ for d in */ ; do
 	    sudo cp -r $SCRIPT/.config/cura/  /home/$TRIMMED/.config/
     fi
     sudo mkdir -p /home/$TRIMMED/Desktop/
-    
+    sudo rm -rf /home/$TRIMMED/.config/google-chrome/Singleton*
     sudo chown -R $TMP:$TMP /home/$TRIMMED/
+    
 done
 
 

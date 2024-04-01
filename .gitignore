@@ -1,12 +1,10 @@
 
-Arduino-2.desktop
 bowlerstudio
-bowlerstudio.desktop
-Cura-5.4.desktop
 Cura/
 eclipse
-Eclipse-BS.desktop
+*.desktop
 ScratchJr-Desktop/
 EspExceptionDecoder-*.zip
-GitHubDesktop-linux-amd64-*.deb
+*.deb
+*.vsix
 
