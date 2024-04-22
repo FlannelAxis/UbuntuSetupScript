@@ -5,6 +5,5 @@ eclipse
 *.desktop
 ScratchJr-Desktop/
 EspExceptionDecoder-*.zip
-*.deb
 *.vsix
 
