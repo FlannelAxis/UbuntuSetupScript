@@ -1,7 +1,9 @@
 #!/bin/bash
 SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+wget -q https://gluonhq.com/products/scene-builder/thanks/?dl=https://download2.gluonhq.com/scenebuilder/21.0.0/install/linux/SceneBuilder-21.0.0.deb
 
+exit 0
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
 sudo add-apt-repository -y ppa:openshot.developers/ppa
@@ -25,6 +27,8 @@ fi
 sudo apt install -y git  texstudio python3-pip libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable
 sudo apt purge -y modemmanager scratch brltty
 sudo pip install pyserial
+
+ 
 
 
 sudo snap install blender --classic
