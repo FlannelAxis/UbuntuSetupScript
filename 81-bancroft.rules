@@ -14,4 +14,7 @@ SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2145", MODE="0777", 
 
 SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", MODE="0777", GROUP="plugdev"
 
+#Lego Spike
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="0009",MODE="0777", SYMLINK+="lego-%n"
 
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="000d",MODE="0777", SYMLINK+="lego-%n"
