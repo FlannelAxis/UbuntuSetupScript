@@ -2,6 +2,31 @@
 SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 SBA=SceneBuilder-21.0.0.deb
+APPINVENT=aisetup.deb
+APPINVENTDesktop="AppInventor.desktop"
+if (! test -e $APPINVENT) then
+	sudo apt -y install zlib1g:i386 lib32stdc++6
+	sudo rm -rf /usr/google/appinventor/
+	wget http://appinv.us/aisetup_linux_deb -O $APPINVENT
+	sudo dpkg -i $APPINVENT
+	sudo cp $SCRIPT/Android.png /usr/google/appinventor/Android.png
+	echo "[Desktop Entry]
+	Version=1.0
+	Type=Application
+	Name=App Inventor
+	Comment=
+	Exec=/usr/google/appinventor/commands-for-Appinventor/aiStarter
+	Icon=/usr/google/appinventor/Android.png
+	Path=""
+	Terminal=true
+	StartupNotify=false" > $APPINVENTDesktop
+  	sudo chmod +x $APPINVENTDesktop
+	gio set $APPINVENTDesktop "metadata::trusted" yes
+	sudo desktop-file-install $APPINVENTDesktop
+else
+	echo "$APPINVENT installed "
+fi
+exit 0
 
 if (! test -e $SBA) then
 	wget https://github.com/BancroftSchoolOpenSource/UbuntuSetupScript/releases/download/0.0.0/$SBA
