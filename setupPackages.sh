@@ -26,7 +26,6 @@ if (! test -e $APPINVENT) then
 else
 	echo "$APPINVENT installed "
 fi
-exit 0
 
 if (! test -e $SBA) then
 	wget https://github.com/BancroftSchoolOpenSource/UbuntuSetupScript/releases/download/0.0.0/$SBA
