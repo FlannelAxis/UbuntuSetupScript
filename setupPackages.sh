@@ -3,9 +3,9 @@ SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 SBA=SceneBuilder-21.0.0.deb
 APPINVENT=aisetup.deb
-APPINVENTDesktop="AppInventor.desktop"
+APPINVENTDesktop="AppInventorTerminal.desktop"
 if (! test -e $APPINVENT) then
-	sudo apt -y install zlib1g:i386 lib32stdc++6
+	sudo apt -y install zlib1g:i386 lib32stdc++6 libstdc++6:i386 lib32z1
 	sudo rm -rf /usr/google/appinventor/
 	wget http://appinv.us/aisetup_linux_deb -O $APPINVENT
 	sudo dpkg -i $APPINVENT
@@ -13,7 +13,7 @@ if (! test -e $APPINVENT) then
 	echo "[Desktop Entry]
 	Version=1.0
 	Type=Application
-	Name=App Inventor
+	Name=App Inventor Terminal
 	Comment=
 	Exec=/usr/google/appinventor/commands-for-Appinventor/aiStarter
 	Icon=/usr/google/appinventor/Android.png
@@ -55,7 +55,7 @@ else
 	echo "$GITHUBDESKTOP installed "
 fi
 
-sudo apt install -y git  texstudio python3-pip libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable kazam gnome-sound-recorder
+sudo apt install -y git  texstudio python3-pip libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable kazam gnome-sound-recorder ffmpeg
 sudo apt purge -y modemmanager scratch brltty
 sudo pip install pyserial
 
