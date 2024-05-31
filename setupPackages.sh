@@ -4,6 +4,9 @@ SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 SBA=SceneBuilder-21.0.0.deb
 APPINVENT=aisetup.deb
 APPINVENTDesktop="AppInventorTerminal.desktop"
+FreecadDesktop="Freecad.desktop"
+#https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/
+FREECAD=FreeCAD_weekly-builds-37543-conda-Linux-x86_64-py311.AppImage
 if (! test -e $APPINVENT) then
 	sudo apt -y install zlib1g:i386 lib32stdc++6 libstdc++6:i386 lib32z1
 	sudo rm -rf /usr/google/appinventor/
@@ -25,6 +28,29 @@ if (! test -e $APPINVENT) then
 	sudo desktop-file-install $APPINVENTDesktop
 else
 	echo "$APPINVENT installed "
+fi
+
+if (! test -e $FreecadDesktop) then
+
+	wget https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/$FREECAD -O freecad
+	sudo cp freecad /usr/local/bin/
+	sudo chmod +x /usr/local/bin/freecad
+	sudo cp FreeCAD-logo.png /usr/local/bin/
+	echo "[Desktop Entry]
+	Version=1.0
+	Type=Application
+	Name=App Inventor Terminal
+	Comment=
+	Exec=/usr/local/bin/freecad
+	Icon=/usr/local/bin/FreeCAD-logo.png
+	Path=""
+	Terminal=true
+	StartupNotify=false" > $FreecadDesktop
+  	sudo chmod +x $FreecadDesktop
+	gio set $FreecadDesktop "metadata::trusted" yes
+	sudo desktop-file-install $FreecadDesktop
+else
+	echo "$FreecadDesktop installed "
 fi
 
 if (! test -e $SBA) then
@@ -56,7 +82,7 @@ else
 fi
 
 sudo apt install -y git  texstudio python3-pip libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable kazam gnome-sound-recorder ffmpeg
-sudo apt purge -y modemmanager scratch brltty
+sudo apt purge -y modemmanager scratch brltty meshlab
 sudo pip install pyserial
 
  
