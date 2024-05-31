@@ -39,7 +39,7 @@ if (! test -e $FreecadDesktop) then
 	echo "[Desktop Entry]
 	Version=1.0
 	Type=Application
-	Name=App Inventor Terminal
+	Name=FreeCAD 0.22.0
 	Comment=
 	Exec=/usr/local/bin/freecad
 	Icon=/usr/local/bin/FreeCAD-logo.png
