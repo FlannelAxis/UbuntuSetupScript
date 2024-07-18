@@ -201,22 +201,13 @@ if (! test -e $ECLIPSE) then
 	gio set $ECLIPSE "metadata::trusted" yes
 	sudo desktop-file-install $ECLIPSE
 fi
-DESKTOP_FILE=$SCRIPT/bowlerstudio.desktop
-if (! test -e $DESKTOP_FILE) then
-	echo "[Desktop Entry]
-	Version=1.0
-	Type=Application
-	Name=BowlerStudio
-	Comment=BowlerStudio Robotics IDE
-	Exec=/usr/local/bin/bowlerstudio
-	Icon=/usr/local/bin/splash.png
-	Path=
-	Terminal=false
-	StartupNotify=false" > $DESKTOP_FILE
-	sudo chmod +x $DESKTOP_FILE
-	gio set $DESKTOP_FILE "metadata::trusted" yes
-	sudo desktop-file-install $DESKTOP_FILE
+#https://github.com/CommonWealthRobotics/HatRack/releases/latest/download/BowlerLauncher-Linux-x86_64.deb
+BOWLERLAUNCHER=BowlerLauncher-Linux-x86_64.deb
+if (! test -e $BOWLERLAUNCHER) then
+	wget https://github.com/CommonWealthRobotics/HatRack/releases/latest/download/$BOWLERLAUNCHER
+	sudo dpkg -i $BOWLERLAUNCHER
 fi
+
 
 SCRATCH3=scratch-desktop_3.3.0_amd64.deb
 if (! test -e $SCRATCH3) then
