@@ -98,7 +98,7 @@ sudo udevadm trigger
 
 
 if (! test -e /usr/local/bin/cura) then
-	curl -L https://github.com/Ultimaker/Cura/releases/download/5.4.0/UltiMaker-Cura-5.4.0-linux-modern.AppImage -o $SCRIPT/cura
+	curl -L https://github.com/Ultimaker/Cura/releases/download/5.8.1/UltiMaker-Cura-5.8.1-linux-X64.AppImage  -o $SCRIPT/cura
 	sudo mv $SCRIPT/cura /usr/local/bin/
 	sudo chmod +x /usr/local/bin/cura
 fi
