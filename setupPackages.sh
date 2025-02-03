@@ -126,7 +126,9 @@ if (! test -e $CURADESKTOP) then
 fi
 if (! test -e $ARDUINODESKTOP) then
 	sudo wget https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.4_Linux_64bit.AppImage -O /usr/local/bin/arduino-2
-	sudo chmod +x /usr/local/bin/arduino-2 
+	sudo chmod +x /usr/local/bin/arduino-2
+	sudo cp $SCRIPT/arduinoappimage /etc/apparmor.d/ 
+	sudo systemctl reload apparmor.service
 	sudo wget https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg -O /usr/local/bin/arduino.svg
 	echo "[Desktop Entry]
 	Version=1.0
