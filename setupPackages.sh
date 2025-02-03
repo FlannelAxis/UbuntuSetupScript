@@ -83,9 +83,9 @@ else
 	echo "$GITHUBDESKTOP installed "
 fi
 
-sudo apt install -y git  texstudio python3-pip mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable kazam gnome-sound-recorder ffmpeg gedit f3d
+sudo apt install -y git  texstudio python3-pip mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable kazam gnome-sound-recorder ffmpeg gedit f3d python3-serial
 sudo apt purge -y modemmanager scratch brltty meshlab
-sudo pip install pyserial
+#sudo pip install pyserial
 
 sudo snap install blender --classic
 
@@ -166,7 +166,9 @@ SCRATCHJR=$SCRIPT/ScratchJr-Desktop/
 if (! test -e $SCRATCHJR) then
 	git clone https://github.com/leonskb4/ScratchJr-Desktop $SCRATCHJR
 	cd $SCRATCHJR
+	set +e
 	npm install && npm run publish
+	set -e
 	sudo dpkg -i $SCRATCHJR/out/make/scratchjr*.deb
  	cd $SCRIPT/
 fi
@@ -198,10 +200,10 @@ if (! test -e $BOWLERLAUNCHER) then
 	wget https://github.com/CommonWealthRobotics/HatRack/releases/latest/download/$BOWLERLAUNCHER
 	sudo dpkg -i $BOWLERLAUNCHER
 fi
-CADOODLE= CaDoodle-Linux-x86_64.deb 
+CADOODLE=CaDoodle-Linux-x86_64.deb 
 if (! test -e $CADOODLE) then
 	wget https://github.com/CommonWealthRobotics/CaDoodle/releases/latest/download/$CADOODLE
-	sudo dpkg -i $BOWLERLAUNCHER
+	sudo dpkg -i $CADOODLE
 fi
 
 SCRATCH3=scratch-desktop_3.3.0_amd64.deb
@@ -229,6 +231,7 @@ sudo chmod 777 -R /tmp/arduino/
 sudo mkdir -p /etc/skel/.config
 sudo cp -r $SCRIPT/.config/cura/ /etc/skel/.config/
 
+echo "Success! All Packaged Installed!"
 
 
 
