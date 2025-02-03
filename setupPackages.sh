@@ -1,6 +1,6 @@
 #!/bin/bash
 SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
+set -e
 SBA=SceneBuilder-21.0.0.deb
 APPINVENT=aisetup.deb
 APPINVENTDesktop="AppInventorTerminal.desktop"
@@ -58,6 +58,7 @@ fi
 
 if (! test -e $SBA) then
 	wget https://github.com/BancroftSchoolOpenSource/UbuntuSetupScript/releases/download/0.0.0/$SBA
+	sudo apt install libpcre3
 	sudo dpkg -i $SBA
 else
 	echo "$SBA installed "
@@ -67,11 +68,11 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
 sudo add-apt-repository -y ppa:openshot.developers/ppa
 sudo add-apt-repository -y ppa:sunderme/texstudio
-sudo add-apt-repository -y ppa:sylvain-pineau/kazam
-
+#sudo add-apt-repository -y ppa:sylvain-pineau/kazam
+set +e
 sudo apt update
 sudo apt  -y upgrade
-
+set -e
 GITHUBDESKTOPRELEASE=3.3.5-linux2
 #https://github.com/shiftkey/desktop/releases/download/release-3.3.5-linux2/GitHubDesktop-linux-amd64-3.3.5-linux2.deb
 GITHUBDESKTOP=GitHubDesktop-linux-amd64-$GITHUBDESKTOPRELEASE.deb
@@ -82,7 +83,7 @@ else
 	echo "$GITHUBDESKTOP installed "
 fi
 
-sudo apt install -y git  texstudio python3-pip libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable kazam gnome-sound-recorder ffmpeg gedit f3d
+sudo apt install -y git  texstudio python3-pip mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable kazam gnome-sound-recorder ffmpeg gedit f3d
 sudo apt purge -y modemmanager scratch brltty meshlab
 sudo pip install pyserial
 
