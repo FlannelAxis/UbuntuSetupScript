@@ -6,7 +6,10 @@ APPINVENT=aisetup.deb
 APPINVENTDesktop="AppInventorTerminal.desktop"
 FreecadDesktop="Freecad.desktop"
 #https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/
-FREECAD=FreeCAD_weekly-builds-37543-conda-Linux-x86_64-py311.AppImage
+FREECAD=FreeCAD_1.0.0-conda-Linux-x86_64-py311.AppImage
+if (! test -e ~/bin/ ) then
+	mkdir ~/bin/
+fi
 if (! test -e $APPINVENT) then
 	sudo apt -y install zlib1g:i386 lib32stdc++6 libstdc++6:i386 lib32z1
 	sudo rm -rf /usr/google/appinventor/
@@ -32,7 +35,7 @@ fi
 
 if (! test -e $FreecadDesktop) then
 
-	wget https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/$FREECAD -O freecad
+	wget https://github.com/FreeCAD/FreeCAD-Bundle/releases/tag/1.0.0/$FREECAD -O freecad
 	sudo cp freecad /usr/local/bin/
 	sudo chmod +x /usr/local/bin/freecad
 	sudo cp FreeCAD-logo.png /usr/local/bin/
@@ -73,20 +76,15 @@ GITHUBDESKTOPRELEASE=3.3.5-linux2
 #https://github.com/shiftkey/desktop/releases/download/release-3.3.5-linux2/GitHubDesktop-linux-amd64-3.3.5-linux2.deb
 GITHUBDESKTOP=GitHubDesktop-linux-amd64-$GITHUBDESKTOPRELEASE.deb
 if (! test -e $GITHUBDESKTOP) then
-	sudo apt purge -y bcmwl-kernel-source
-	sudo apt install -y firmware-b43-installer
 	wget https://github.com/shiftkey/desktop/releases/download/release-$GITHUBDESKTOPRELEASE/$GITHUBDESKTOP
 	sudo dpkg -i $GITHUBDESKTOP
 else
 	echo "$GITHUBDESKTOP installed "
 fi
 
-sudo apt install -y git  texstudio python3-pip libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable kazam gnome-sound-recorder ffmpeg
+sudo apt install -y git  texstudio python3-pip libncurses5 libpython2.7 mesa-utils openshot-qt python3-openshot ssh net-tools build-essential curl wget inkscape docker.io  libfuse2 nodejs npm sssd-ad sssd-tools realmd adcli krita obs-studio godot3 google-chrome-stable kazam gnome-sound-recorder ffmpeg gedit f3d
 sudo apt purge -y modemmanager scratch brltty meshlab
 sudo pip install pyserial
-
- 
-
 
 sudo snap install blender --classic
 
@@ -126,7 +124,7 @@ if (! test -e $CURADESKTOP) then
 	sudo desktop-file-install $CURADESKTOP
 fi
 if (! test -e $ARDUINODESKTOP) then
-	sudo wget https://downloads.arduino.cc/arduino-ide/arduino-ide_2.2.1_Linux_64bit.AppImage -O /usr/local/bin/arduino-2
+	sudo wget https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.4_Linux_64bit.AppImage -O /usr/local/bin/arduino-2
 	sudo chmod +x /usr/local/bin/arduino-2 
 	sudo wget https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg -O /usr/local/bin/arduino.svg
 	echo "[Desktop Entry]
@@ -172,28 +170,20 @@ if (! test -e $SCRATCHJR) then
  	cd $SCRIPT/
 fi
 
-wget https://github.com/CommonWealthRobotics/Installer-Linux-BowlerStudio/releases/latest/download/bowlerstudio -O $SCRIPT/bowlerstudio
-sudo cp $SCRIPT/bowlerstudio /usr/local/bin/bowlerstudio
-sudo chmod +x /usr/local/bin/bowlerstudio
 
-wget https://github.com/CommonWealthRobotics/ESP32ArduinoEclipseInstaller/releases/latest/download/eclipse -O $SCRIPT/eclipse
-sudo cp $SCRIPT/eclipse /usr/local/bin/eclipse
-sudo chmod +x /usr/local/bin/eclipse
-sudo cp $SCRIPT/icon.xpm /usr/local/bin/icon.xpm
-sudo cp $SCRIPT/splash.png /usr/local/bin/splash.png
-
-sudo sed -i 's/sudo/#sudo/g' /usr/local/bin/bowlerstudio
-sudo sed -i 's/pkexec/#pkexec/g' /usr/local/bin/eclipse
 
 ECLIPSE=$SCRIPT/Eclipse-BS.desktop
 if (! test -e $ECLIPSE) then
+	mkdir ~/bin/eclipse/
+	wget https://github.com/CommonWealthRobotics/ExternalEditorsBowlerStudio/releases/download/0.1.1/Eclipse-Groovy-Linux-x86_64.tar.gz -O ~/bin/Eclipse-Groovy-Linux-x86_64.tar.gz
+	tar -xvzf ~/bin/Eclipse-Groovy-Linux-x86_64.tar.gz -C ~/bin/eclipse/
 	echo "[Desktop Entry]
 	Version=1.0
 	Type=Application
-	Name=Eclipse Bowlerstudio
+	Name=Eclipse CommonWealthRobotics Build
 	Comment=
-	Exec=/usr/local/bin/eclipse
-	Icon=/usr/local/bin/icon.xpm
+	Exec=$HOME/bin/eclipse/eclipse
+	Icon=$HOME/bin/eclipse/icon.xpm
 	Path=
 	Terminal=false
 	StartupNotify=false" > $ECLIPSE
@@ -207,7 +197,11 @@ if (! test -e $BOWLERLAUNCHER) then
 	wget https://github.com/CommonWealthRobotics/HatRack/releases/latest/download/$BOWLERLAUNCHER
 	sudo dpkg -i $BOWLERLAUNCHER
 fi
-
+CADOODLE= CaDoodle-Linux-x86_64.deb 
+if (! test -e $CADOODLE) then
+	wget https://github.com/CommonWealthRobotics/CaDoodle/releases/latest/download/$CADOODLE
+	sudo dpkg -i $BOWLERLAUNCHER
+fi
 
 SCRATCH3=scratch-desktop_3.3.0_amd64.deb
 if (! test -e $SCRATCH3) then
@@ -234,25 +228,7 @@ sudo chmod 777 -R /tmp/arduino/
 sudo mkdir -p /etc/skel/.config
 sudo cp -r $SCRIPT/.config/cura/ /etc/skel/.config/
 
-cd /home/
-for d in */ ; do
-    TRIMMED=$(basename $d);
-    echo "Checking $TRIMMED"
-    TMP=$(id -u $TRIMMED)
-    sudo mkdir -p /home/$TRIMMED/.arduinoIDE/plugins/
-    sudo cp $SCRIPT/$EXCEPTION_ZIP /home/$TRIMMED/.arduinoIDE/plugins/
-    if (! test -d /home/$TRIMMED/.config/cura/) then
-    	    echo "Updating cura config for $TRIMMED"
-	    sudo cp -r $SCRIPT/.config/cura/  /home/$TRIMMED/.config/
-    fi
-    sudo mkdir -p /home/$TRIMMED/Desktop/
-    sudo rm -rf /home/$TRIMMED/.config/google-chrome/Singleton*
-    sudo chown -R $TMP:$TMP /home/$TRIMMED/
-    
-done
 
-
-sudo lpadmin -p MDC_LAB -E -v ipp://10.88.5.129/ipp/print -m everywhere 
 
 
 
