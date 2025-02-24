@@ -233,6 +233,10 @@ sudo chmod 777 -R /tmp/arduino/
 sudo mkdir -p /etc/skel/.config
 sudo cp -r $SCRIPT/.config/cura/ /etc/skel/.config/
 
+sudo apt install flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub net.mkiol.SpeechNote
+
 echo "Success! All Packaged Installed!"
 
 
