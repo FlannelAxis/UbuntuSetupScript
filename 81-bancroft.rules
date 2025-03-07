@@ -1,20 +1,20 @@
 # File made by Kevin harrington
 
-SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60",MODE="0777", SYMLINK+="esp32-%n"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523",MODE="0777", SYMLINK+="nano-%n"
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60",MODE="0777", SYMLINK+="esp32-%n"
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523",MODE="0777", SYMLINK+="nano-%n"
 
 # Lego NXT brick in normal mode
-SUBSYSTEM=="usb", DRIVER=="usb", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="0002",  MODE="0777"
+#SUBSYSTEM=="usb", DRIVER=="usb", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="0002",  MODE="0777"
 # Lego NXT brick in firmware update mode (Atmel SAM-BA mode)
-SUBSYSTEM=="usb", DRIVER=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="6124",  MODE="0777"
+#SUBSYSTEM=="usb", DRIVER=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="6124",  MODE="0777"
 #0x03eb and PID list: 0x2145
-SUBSYSTEM=="tty", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2145",MODE="0777", SYMLINK+="uno-%n"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043",MODE="0777", SYMLINK+="uno-%n"
-SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2145", MODE="0777", ENV{ID_MM_DEVICE_IGNORE}="1"
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2145",MODE="0777", SYMLINK+="uno-%n"
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043",MODE="0777", SYMLINK+="uno-%n"
+#SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2145", MODE="0777", ENV{ID_MM_DEVICE_IGNORE}="1"
 
-SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", MODE="0777", GROUP="plugdev"
+#SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", MODE="0777", GROUP="plugdev"
 
 #Lego Spike
-SUBSYSTEM=="tty", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="0009",MODE="0777", SYMLINK+="lego-%n"
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="0009",MODE="0777", SYMLINK+="lego-%n"
 
-SUBSYSTEM=="tty", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="000d",MODE="0777", SYMLINK+="lego-%n"
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="000d",MODE="0777", SYMLINK+="lego-%n"
