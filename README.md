@@ -11,6 +11,5 @@ This script must be run by a user with sudo permission and someone that has the 
 sudo apt -y install git
 git clone https://github.com/BancroftSchoolOpenSource/UbuntuSetupScript.git
 cd UbuntuSetupScript
-bash run.sh
-sudo login kharrington@bancroftschool.org
+bash setup
 ```
