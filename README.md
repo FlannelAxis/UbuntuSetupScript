@@ -11,7 +11,7 @@ Create a partition 5% larger than ram to setup hibernate feature.
 
 ```
 sudo apt -y install git
-git clone https://github.com/BancroftSchoolOpenSource/UbuntuSetupScript.git
+git clone https://github.com/FlannelAxis/UbuntuSetupScript/
 cd UbuntuSetupScript
 bash setup
 ```
